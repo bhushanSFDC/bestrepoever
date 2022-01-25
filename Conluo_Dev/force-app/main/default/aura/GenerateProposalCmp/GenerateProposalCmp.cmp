@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningquickactionwithoutheader" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <c:fmlwcCreatePDFbyEmailTemp templateName="FM_Proposal_Generation" recordId="{!v.recordId}"></c:fmlwcCreatePDFbyEmailTemp>
+</aura:component>

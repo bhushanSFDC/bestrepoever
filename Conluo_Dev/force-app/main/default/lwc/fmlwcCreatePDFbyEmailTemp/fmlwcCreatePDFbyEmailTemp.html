@@ -1,0 +1,16 @@
+<template>
+    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small">
+    </lightning-spinner>
+   <div class="slds-p-around_medium">
+    <!-- <iframe src={siteURL} ></iframe>
+ -->
+		
+ <div class="slds-text-align_right slds-m-around_x-large">
+    <lightning-button variant="brand" label="generate pdf" onclick={pdfHandler}></lightning-button>
+</div>
+<div class="slds-box slds-p-around_medium">
+    <lightning-formatted-rich-text value={htmltext}></lightning-formatted-rich-text>
+</div>
+</div>
+
+</template>

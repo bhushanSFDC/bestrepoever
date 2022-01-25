@@ -1,0 +1,67 @@
+<apex:page renderAs="pdf" controller="FetchDetails" showHeader="false">
+           <p style="text-align: center;"><strong><img style="float: left;" src="https://i.pinimg.com/originals/7c/51/98/7c5198d2a0751fa76c8433dba4a1a12a.jpg" alt="" width="170" height="113" /></strong></p>
+<h1 style="text-align: right;"><span style="text-align: center; color: #00ff00;"><strong>&nbsp;Conlue Faciity Management</strong></span></h1>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<hr />
+<p style="text-align: center;"><strong>Quotation Worksheet</strong></p>
+<p style="text-align: center;">&nbsp;</p>
+<table style="height: 126px; width: 101.365%; border-collapse: collapse;">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 33.9179%; height: 18px;"><strong>Company Name :</strong></td>
+<td style="width: 13.6059%; height: 18px;"></td>
+<td style="width: 32.6191%; height: 18px; text-align: right;"><strong>Date :</strong></td>
+<td style="width: 19.8571%; height: 18px;"></td>
+</tr>
+<tr style="height: 36px;">
+<td style="width: 33.9179%; height: 36px;"><strong>Customer Contact :</strong></td>
+<td style="width: 13.6059%; height: 36px;">&nbsp;</td>
+<td style="width: 32.6191%; height: 36px;">&nbsp;</td>
+<td style="width: 19.8571%; height: 36px;">&nbsp;</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 33.9179%; height: 18px;"><strong>Customer Email :</strong></td>
+<td style="width: 13.6059%; height: 18px;">&nbsp;</td>
+<td style="width: 32.6191%; height: 18px;">&nbsp;</td>
+<td style="width: 19.8571%; height: 18px;">&nbsp;</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 33.9179%; height: 18px;"><strong>Customer Address :</strong></td>
+<td style="width: 13.6059%; height: 18px;">&nbsp;</td>
+<td style="width: 32.6191%; height: 18px;">&nbsp;</td>
+<td style="width: 19.8571%; height: 18px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Job Details :</strong></p>
+<table style="border-collapse: collapse; width: 100%; height: 108px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 20%; text-align: center; height: 18px;"><strong>Job Name</strong></td>
+<td style="width: 20%; text-align: center; height: 18px;">&nbsp;<strong>Type</strong></td>
+<td style="width: 20%; text-align: center; height: 18px;"><strong>Units</strong></td>
+<td style="width: 20%; text-align: center; height: 18px;"><strong>Description</strong></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 20%; height: 18px;">Furniture</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 20%; height: 18px;">window</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 20%; height: 18px; text-align: left;">carpet</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+<td style="width: 20%; height: 18px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: right;"><strong>Total Cost</strong></p>
+</apex:page>

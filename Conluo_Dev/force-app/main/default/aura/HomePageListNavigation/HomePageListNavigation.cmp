@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="pageReference" type="Object"/>
+    <lightning:navigation aura:id="navService"/>
+    <div>
+        <lightning:badge label="New Request" onclick="{!c.callListView}"/>
+    </div>
+    <lightning:badge label="Inspection Scheduled"/>
+
+</aura:component>

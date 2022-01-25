@@ -1,0 +1,16 @@
+.buttonClass{
+    align-items: flex-end;
+    justify-items: center;
+    display: flex;
+
+}
+.centerClass{
+    align-items: center;
+    justify-items: center;
+    display: flex;
+
+}
+.furnitureDetails{
+    border: solid;
+    /*margin: 20px;*/
+}

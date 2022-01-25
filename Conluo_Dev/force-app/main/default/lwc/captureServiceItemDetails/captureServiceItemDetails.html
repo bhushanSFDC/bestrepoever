@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-p-around_small slds-m-around_small">
+        <lightning-input type="date" onchange={handleChange} name="Customer_Requested_Date__c" label="Requested date" ></lightning-input>
+    </div>
+    <div class="slds-p-around_small slds-m-around_small">
+        <lightning-textarea name="Description__c" onkeyup={handleChange} label="Description" placeholder="type here..."></lightning-textarea>
+    </div>
+    <div class="slds-p-around_small slds-m-around_small"> 
+        <c-lwc-look-up-data
+        obj-name="Account"
+        icon-name="standard:Account"
+        label-name="Account"
+        placeholder="Search" 
+        fields={searchLookupfields}
+        display-fields={displayLookupFields}
+        onlookup={handleLookup} >
+    </c-lwc-look-up-data>
+</div>
+</template>

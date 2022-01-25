@@ -1,0 +1,44 @@
+<template>
+    <div if:true={openmodel}>
+        <template if:true={objectInfo.data}>
+            <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick={closeModal}>
+                            X<span class="slds-assistive-text">Cancel</span>
+                        </button>
+                        <h2 id="header43" class="slds-text-heading--medium">New Account</h2>
+                    </div>
+                    
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-size--1-of-2 slds-large-size--1-of-2">
+                                <div class="slds-align--absolute-center">Select a Record Type</div>                            
+                           </div>
+                            <div class="slds-size--1-of-2 slds-large-size--1-of-2">
+                                <lightning-combobox name="recordType" label="" placeholder="Choose Account record type"
+                                    value={value} options={recordTypeId} onchange={changeHandler}>
+                                </lightning-combobox>
+                            </div>&nbsp; &nbsp;
+                        </div>                   
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning:button class="slds-button slds-button--neutral" >Cancel</lightning:button>
+                        <lightning:button class="slds-button slds-button--brand" onclick={handleChange}>Next</lightning:button>
+                    </div>
+                </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop--open"></div>
+            
+        </template>
+    </div>
+        <template  if:true={recordTypeIdVal}> 
+            
+        <lightning-record-form
+            object-api-name="Account"
+            record-type-id={recordTypeIdVal}
+            fields={fields}
+            onsuccess={handleSuccess}>
+    </lightning-record-form>
+        </template>
+</template>

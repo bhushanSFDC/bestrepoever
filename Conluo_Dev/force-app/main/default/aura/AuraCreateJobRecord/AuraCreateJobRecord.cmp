@@ -1,0 +1,75 @@
+<aura:component controller = "ApexCreateJobController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="jobList" type="Job_Details__c[]"/>
+    <aura:attribute name="servItem" type="Service_Items__c" default="{'sobjectType':'Service_Items__c', 
+                                                                     'Description__c': '', Customer__c:''}"/>
+    <aura:attribute name="selCustomer" type="Account"/>
+    <aura:attribute name="activeSections" type="List" default="['A','B']" />
+    <aura:attribute name="activeSectionsMessage" type="String" default="" />
+    <aura:attribute name="extendedFilter" type="String" default=""/>
+    <aura:attribute name="options" type="List" access="PRIVATE"/>
+    <aura:attribute name="selectedValue" type="String" access="PRIVATE"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+        <lightning:navigation aura:id="navService"/>
+
+        <lightning:notificationsLibrary aura:id="notifLib"/>
+
+    
+        <lightning:accordion aura:id="accordion" activeSectionName="A">
+        <lightning:accordionSection name="A" label="Furniture Information" class="slds-scrollable_y" >
+
+            
+                <aura:set attribute="body">
+                  <div class="borderContent"> 
+                    <aura:iteration items="{!v.jobList}" var="job" indexVar="index">
+                        
+                            <lightning:layout verticalAlign="center" >
+                                <lightning:layoutItem padding="around-small">
+                                    <lightning:select aura:id="furnType" label="Furniture" name="furniture" value = "{!job.Furniture_Type__c}" required="true">
+                                        <option value="">Choose a Type...</option>
+                                        <option value="Sofa">Sofa</option>
+                                        <option value="Cupboard">Cupboard</option>
+                                        <option value="Closet">Closet</option>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small">
+                                    <lightning:input type="number" name="quantity" value = "{!job.Units__c}" label="Quantity" placeholder="type here..."/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-medium">
+                                    &nbsp;
+                                    
+                                    <a onclick="{!c.removeRecord}" data-record="{!index}">
+<lightning:button aura:id="Delete" variant="destructive" type="Del" label="Del" />
+                                        <!--<lightning:icon iconName="utility:delete" size="small" alternativeText="Delete"/>-->
+                                        <span class="slds-assistive-text">Delete</span>
+                                    </a>
+                                    
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        
+                        
+                    </aura:iteration>
+                    
+                    </div>
+                    
+                </aura:set>
+                
+            </lightning:accordionSection>
+        </lightning:accordion>
+    &nbsp;
+    <lightning:button aura:id="add" variant="brand" type="add" label="Add Row" onclick="{! c.addRow }" />
+        <lightning:accordion aura:id="accordion2" activeSectionName="B">
+            <lightning:accordionSection name="B" label="Overall Information">
+                
+                <aura:set attribute="body">
+                    
+                    <c:InputLookup objectAPIName="Account" selectedRecordId="{!v.servItem.Customer__c}" extendedFilter="{!v.extendedFilter}"/>
+                    <lightning:textarea aura:id="desc" value ="{!v.servItem.Description__c}" label="Description" name="desc" placeholder="Please specify..." />
+                    
+                </aura:set>
+            </lightning:accordionSection>    
+            
+            </lightning:accordion>
+        
+            <lightning:button aura:id="submit" variant="brand" type="submit" label="Submit" onclick="{! c.onSubmit }" />
+     
+</aura:component>

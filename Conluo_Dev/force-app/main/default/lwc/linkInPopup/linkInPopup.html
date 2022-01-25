@@ -1,0 +1,40 @@
+<template>
+    <lightning-card>
+        <lightning-button variant="brand-outline" label={websiteLabel} title="Looks like a link" onclick={gotowebsite} class="slds-p-bottom_small slds-align_absolute-center slds-m-left_x-small"></lightning-button>
+        <lightning-button variant="brand-outline" label={surveyLabel} title="Looks like a link" onclick={gotosurveys} class="slds-p-bottom_small slds-align_absolute-center slds-m-left_x-small"></lightning-button>
+    </lightning-card>
+    <div if:true={showWebsite}>
+        <iframe src="https://heysalesforce.org/" frameborder="0" height="1200px" width="100%" 
+        style="overflow:hidden" ></iframe>
+    </div>
+    <template if:true={showSurvey}>
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+            <header class="slds-modal__header slds-modal__header_empty">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+            </svg>
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <p><iframe src="https://www.surveymonkey.com/r/32NRHD9" frameborder="0" height="900px" width="100%" 
+                ></iframe></p>
+            </div>
+            <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral">Cancel</button>
+            <button class="slds-button slds-button_brand">Save</button>
+            </footer>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+
+
+        
+        </template>
+    <div if:true={isLoading}>
+        <lightning-spinner variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+
+</template>

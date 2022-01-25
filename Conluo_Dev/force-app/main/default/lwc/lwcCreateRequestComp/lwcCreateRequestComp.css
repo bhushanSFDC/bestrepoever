@@ -1,0 +1,10 @@
+.custom-box {
+    background-color: #f4f6f9;
+    height: 100px;
+    display: flex;
+    /* justify-content: center; */
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    padding-left: 30px;
+}

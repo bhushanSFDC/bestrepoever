@@ -1,0 +1,141 @@
+<template>
+    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small">
+    </lightning-spinner>
+    <template if:true={handleMultipleJobs}>
+        <!-- Implemented for Furniture + Main -->
+        <div class="slds-p-around_small slds-m-around_small captureMultipleDetails">
+            <template iterator:job={listJobs}>
+                <div key={job.value.id} class="slds-p-bottom_small">
+                    <div class="slds-grid slds-gutters singleJob singleFurniture">
+                        <div class="slds-col slds-size_4-of-12">
+                            <lightning-combobox name="Type__c" data-name={job.value.id}
+                                label={multiJobType.lable} value={job.value.Type__c}
+                                placeholder="Select Furniture" options={jobtype} required=true
+                                class="checkValid furnitureType" onchange={handleChange}></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_4-of-12">
+                            <lightning-input class="checkValid furnitureQty" type="number" name="Units__c"
+                                data-name={job.value.id} required value={job.value.Units__c}
+                                label={multiJobType.units} min="0" onchange={handleChange}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_4-of-12 buttonClass">
+                            <lightning-icon icon-name="action:delete" data-name={job.value.id}
+                                onclick={deleteFurnitureRecord} alternative-text="Delete" title="DELETE" size="small">
+                            </lightning-icon>
+                            <div class="slds-p-left_small" if:true={job.last}>
+                                <lightning-icon icon-name="action:add_relationship" onclick={addFurnitureRecord}
+                                    alternative-text="Add Record" title="ADD" size="small"></lightning-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:true={noJobsAdded}>
+                <div class="slds-align_absolute-center">
+                    <lightning-icon icon-name="action:add_relationship" onclick={addFurnitureRecord}
+                        alternative-text="Add Record" title="ADD" size="small"></lightning-icon>
+                </div>
+            </template>
+
+        </div>
+    </template>
+    <template if:true={handleOnlyType}>
+        <!-- Implemented for Boning + Carpet -->
+        <div class="slds-p-around_small slds-m-around_small">
+        <template iterator:job={listJobs}>
+            <div key={job.value.id} class="slds-p-bottom_small">
+                <lightning-radio-group data-name={job.value.id} name="Type__c" label={onlyTypeDetails.lable} options={jobtype}
+                    value={job.value.Type__c} onchange={handleChange} type="button"></lightning-radio-group>
+            </div>
+        </template>
+        </div>
+    </template>
+    <template if:true={isWindow}>
+        <div class="slds-p-around_small slds-m-around_small captureMultipleDetails">
+            <template iterator:job={listJobs}>
+                <div key={job.value.id} class="slds-p-bottom_small">
+                   <div style="border: groove;">
+                        <div class="slds-p-around_medium">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_9-of-12">
+                            <span>Storrelse(oppgis i cm)</span>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12" style="align-self: flex-end;text-align-last: right;">
+                            <lightning-icon icon-name="action:delete" data-name={job.value.id}
+                            onclick={deleteFurnitureRecord} alternative-text="Delete" title="DELETE" size="x-small">
+                        </lightning-icon>
+                             </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_3-of-12">
+                                <lightning-input type="number" name="size_1" label="Width" data-name={job.value.id} onchange={handleChange} ></lightning-input>
+                            </div>
+                            
+                            <div class="slds-col slds-size_3-of-12">
+                                <lightning-input type="number" name="size_2" label="Length" data-name={job.value.id} onchange={handleChange} ></lightning-input>
+                            </div>
+                            <!-- <div class="slds-col slds-size_3-of-12 slds-align_absolute-center">
+                                <lightning-radio-group label="" name="dontKnowOption" data-name={job.value.id} onchange={handlesizeChange} options={dontKnowOption} value={value} type="radio">
+                                </lightning-radio-group>
+                            </div> -->
+                            <div class="slds-col slds-size_3-of-12" style="align-self: flex-end;text-align-last: right;"></div>                                 
+                        </div>
+                        <hr style="margin: revert;">
+                        <div class="slds-col slds-size_6-of-12">
+                            <lightning-input class="checkValid furnitureQty" type="number" name="Units__c"
+                                data-name={job.value.id} required value={job.value.Units__c}
+                                label= "Antall Vinduer" min="0" onchange={handleChange}></lightning-input>
+                        </div>
+                        <hr style="margin: revert;">
+                        <div class="slds-col slds-size_1-of-12">
+                            Sides:
+                            </div>
+                        <div class="slds-grid slds-gutters">
+                            
+                        
+                            <div class="slds-col slds-large-size_2-of-12 slds-small-size_5-of-12">
+                                <lightning-input type="checkbox" label="Innvendig" name="Internal_Window__c" data-name={job.value.id} value={job.value.Internal_Window__c}  onchange={handleChange}></lightning-input>
+                                <!-- <lightning-radio-group  name="Internal_Window__c" data-name={job.value.id} onchange={handleChange} options={internalWindowSide} value={job.value.Internal_Window__c} type="button">
+                                </lightning-radio-group> -->
+                            </div>
+                                                    
+                            <div class="slds-col slds-large-size_2-of-12 slds-small-size_5-of-12">
+                                <lightning-input type="checkbox" label="Utvendig" name="External_Window__c" data-name={job.value.id} value={job.value.External_Window__c}  onchange={handleChange}></lightning-input>
+                                <!-- <lightning-radio-group  name="External_Window__c" data-name={job.value.id} onchange={handleChange} options={externalWindowSide} value={job.value.External_Window__c} type="button">
+                                </lightning-radio-group> -->
+                            </div>
+                        
+                        </div>
+                        <hr style="margin: revert;">
+                        <lightning-input type="toggle" label="kan vinduene apnes og vendes inn" name="Can_window_Open_Inwards__c" data-name={job.value.id} value={job.value.Can_window_Open_Inwards__c}  onchange={handleChange}></lightning-input>
+                                
+                        <!-- <lightning-radio-group  name="Can_window_Open_Inwards__c" data-name={job.value.id} onchange={handleChange} options={inwardsOpenWindow} value={job.value.Can_window_Open_Inwards__c} type="button">
+                        </lightning-radio-group> -->
+                    </div>
+                </div>
+                        <div class="slds-col slds-size_12-of-12 buttonClass slds-p-top_medium slds-p-bottom_medium">
+                            
+                            <div if:true={job.last}>
+                                <lightning-button variant="brand" label="legg til flere vindustyper" title="Primary action" onclick={addFurnitureRecord} class="slds-m-left_x-small"></lightning-button>
+                                
+                            
+                        </div>
+                    
+                    
+                        
+                        
+                    </div>
+                    
+                </div>
+            </template>
+            <template if:true={noJobsAdded}>
+                <div class="slds-align_absolute-center">
+                    <lightning-icon icon-name="action:add_relationship" onclick={addFurnitureRecord}
+                        alternative-text="Add Record" title="ADD" size="small"></lightning-icon>
+                </div>
+            </template>
+
+        </div>
+    </template>
+</template>

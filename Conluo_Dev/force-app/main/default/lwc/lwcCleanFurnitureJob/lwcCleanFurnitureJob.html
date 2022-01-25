@@ -1,0 +1,50 @@
+<template>
+    
+
+    <lightning-card title="Create Furniture Clean Request">
+        
+        <div class="slds-p-around_small">
+            <!--<video width="100%" height="100%" controls="controls">
+                <source src={sampleVideo} type="video/mp4" />               
+            </video>-->
+            <!-- <div class="slds-p-around_small slds-m-around_small furnitureDetails"> -->
+                <c-lwc-capture-job-details job-record-type-id={jobRecordTypeId} job-record-type-name={jobRecordTypeName}></c-lwc-capture-job-details>
+                <!-- <template iterator:furniture={listFurniture}>
+                    <div key={furniture.value.id} class="slds-p-bottom_small">
+                        <div class="slds-grid slds-gutters singleFurniture">
+                            <div class="slds-col slds-size_4-of-12">
+                                <lightning-combobox name="furnituretype" label="Furniture" value={furniture.value.type}
+                                    placeholder="Select Furniture" options={furnitureOptions} required=true
+                                    class="checkValid furnitureType"></lightning-combobox>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12">
+                                <lightning-input class="checkValid furnitureQty" type="number" name="input8" required
+                                    value={furniture.value.quantity} label="Quantity" max="99"></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12 buttonClass">
+                                <lightning-icon icon-name="action:delete" data-name={furniture.value.id} onclick={deleteRecord}
+                                    alternative-text="Delete" title="DELETE" size="small"></lightning-icon>
+                                <div class="slds-p-left_small" if:true={furniture.last}>
+                                    <lightning-icon icon-name="action:add_relationship" onclick={addRecord}
+                                        alternative-text="Add Record" title="ADD" size="small"></lightning-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template> -->
+                <!-- <template if:true={nofurniture}>
+                    <div class="slds-align_absolute-center">
+                    <lightning-icon icon-name="action:add_relationship" onclick={addRecord} alternative-text="Add Record" title="ADD" size="small"></lightning-icon>
+                </div>
+                </template>
+   
+            </div> -->
+            <c-capture-service-item-details onchanged={handleServiceItems}></c-capture-service-item-details>
+           
+        <div class="slds-m-around_medium slds-align_absolute-center">
+            <button class="slds-button slds-button_brand" onclick={submitRecord}>SUBMIT</button>
+            <button class="slds-button slds-button_brand" onclick={BackToSelection}>BACK</button>
+        </div>
+    </div>
+</lightning-card>
+</template>

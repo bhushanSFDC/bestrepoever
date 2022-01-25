@@ -1,0 +1,19 @@
+<aura:component controller="TextVFPDFController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" >
+	<aura:attribute name="recordId" type="String" />
+
+    
+    <!--###### MODAL BOX Start From Here ######--> 
+      
+          <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+         
+          <!--###### MODAL BOX BODY Part Start From Here ######-->
+          <c:pdfGenerationDemo recordId="{!v.recordId}"></c:pdfGenerationDemo>
+       
+    
+
+    
+    
+	<!--<lightning:button variant="brand" label="Save" onclick="{! c.savePDF }" />-->
+
+
+</aura:component>

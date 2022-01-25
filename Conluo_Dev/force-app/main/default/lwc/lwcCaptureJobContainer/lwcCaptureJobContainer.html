@@ -1,0 +1,21 @@
+<template>
+
+
+    <lightning-card title={title}>
+
+        <div class="slds-p-around_small">
+            <!--<video width="100%" height="100%" controls="controls">
+                <source src={sampleVideo} type="video/mp4" />               
+            </video>-->
+            <c-lwc-capture-job-details job-record-type-id={jobRecordTypeId} job-record-type-name={jobRecordTypeName}>
+            </c-lwc-capture-job-details>
+
+            <c-capture-service-item-details onchanged={handleServiceItems}></c-capture-service-item-details>
+
+            <div class="slds-m-around_medium slds-align_absolute-center">
+                <button class="slds-button slds-button_brand" onclick={submitRecord}>SUBMIT</button>
+                <button class="slds-button slds-button_brand" onclick={BackToSelection}>BACK</button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

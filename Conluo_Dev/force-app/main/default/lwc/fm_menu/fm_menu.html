@@ -1,0 +1,78 @@
+<template>
+    <div class="fm-menu-root">
+      <template if:true={componentIsReady}>
+        <template if:true={menuItems}>
+          <div class="slds-card themeCard">
+            <div class="">
+              <ul class="custom flexContainer clearfix">
+                <template for:each={menuItems} for:item="item" for:index="i">
+                  <template if:false={item.nestedLinks}>
+                    <li key={item.linkText} class="topMenuItem">
+                      <a
+                        href={item.linkUrl}
+                        onclick={navigateToItem}
+                        class={item.style}
+                        >{item.linkText}</a
+                      >
+                    </li>
+                  </template>
+                  <template if:true={item.nestedLinks}>
+                    <li key={item.linkText} class="topMenuItem dropdown">
+                      <a
+                        href={item.linkUrl}
+                        onclick={navigateToItem}
+                        class={item.style}
+                        >{item.linkText}</a
+                      >
+                      <!-- nestedLink level 1 -->
+  
+                      <span data-toggle="dropdown" class="dropdown-toggle"></span>
+                      <!-- dropdown-menu -->
+                      <ul class="dropdown__menu">
+                        <template
+                          for:each={item.nestedLinks}
+                          for:item="item"
+                          for:index="i"
+                        >
+                          <li key={item.linkText} class="dropdownMenuItem">
+                            <a
+                              href={item.linkUrl}
+                              onclick={navigateToItem}
+                              class={item.style}
+                              >{item.linkText}</a
+                            >
+                            <!-- nestedLink level 2 -->
+                            <!-- <template if:true={item.nestedLinks}>
+                          <span
+                            data-toggle="dropdown"
+                            class="dropdown-toggle"
+                          ></span>
+                          <ul class="dropdown__menu">
+                            <template
+                              for:each={item.nestedLinks}
+                              for:item="item"
+                              for:index="i"
+                            >
+                              <li key={item.id} class="dropdownMenuItem">
+                                <a href={item.linkUrl} onclick={navigateToItem} class={item.style}
+                                  >{item.linkText}</a
+                                >
+                              </li>
+                            </template>
+                          </ul>
+                        </template> -->
+                            <!-- END nestedLink level 2 -->
+                          </li>
+                        </template>
+                      </ul>
+                    </li>
+                  </template>
+                  <!-- END nestedLink level 1 -->
+                </template>
+              </ul>
+            </div>
+          </div>
+        </template>
+      </template>
+    </div>
+  </template>
